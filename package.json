@@ -1,0 +1,15 @@
+{
+  "name": "react-route-config",
+  "version": "1.0.0",
+  "description": "React route config componenet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "bla"
+  },
+  "author": "Nicolas Dufreche <n.dufreche@gmail.com>",
+  "license": "ISC"
+}
