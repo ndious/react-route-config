@@ -13,7 +13,7 @@ module.exports = function (key) {
   return config[key] || null;
 }
 
-module.exports.buildRouting = components => {
+module.exports.buildRouting = function (components) {
   var componentEmbeded = {};
 
   Object.keys(components).forEach(function (componentName) {
