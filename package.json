@@ -4,7 +4,7 @@
   "description": "React route config component",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "lab -vcCD index.test.js"
   },
   "repository": {
     "type": "git",
@@ -12,6 +12,13 @@
   },
   "peerDependencies": {
     "react-router": ">=2.x <=3.x"
+  },
+  "devDependencies": {
+    "code": "^3.0.2",
+    "codecov": "^1.0.1",
+    "fsmonitor": "^0.2.4",
+    "istanbul": "^0.4.5",
+    "lab": "^11.0.1"
   },
   "author": "Nicolas Dufreche <n.dufreche@gmail.com>",
   "license": "ISC"
