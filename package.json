@@ -1,14 +1,17 @@
 {
   "name": "react-route-config",
-  "version": "1.0.0",
-  "description": "React route config componenet",
+  "version": "1.0.1",
+  "description": "React route config component",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "bla"
+    "url": "git@github.com:ndufreche/react-route-config.git"
+  },
+  "peerDependencies": {
+    "react-router": ">=2.x <=3.x"
   },
   "author": "Nicolas Dufreche <n.dufreche@gmail.com>",
   "license": "ISC"
