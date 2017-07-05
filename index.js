@@ -13,7 +13,7 @@ module.exports = function (key) {
   return config[key] || null;
 }
 
-module.export.defineRoute = function (name, route) {
+module.exports.defineRoute = function (name, route) {
 
   return function (component) {
     component.pathname = route;
