@@ -2,28 +2,24 @@
 
 ## declare route
 
-> in pages/pages.jsx
+> in pages/page.jsx
 ```js
 import React from 'react'
 
 const Page = () => (<div>My page</div>)
 
-Page.pathname = '/path/to/my/page'
-
-export default Thanks
+export default defineRoute('my-page', '/path/to/my/page')(Page)
 ```
 
-## buildRouting
-
-> in pages/index.js
+> in pages/page-bis.jsx
 ```js
-import { buildRouting } from 'react-route-config'
+import React from 'react'
 
-import Page from './page'
-import PageBis from './page-bis'
+const PageBis = () => (<div>My page</div>)
 
-export const { PagePage, PageBisPage } = buildRouting({Page, PageBis})
+export default defineRoute('my-page-bis', '/path/to/my/page/bis')(PageBis)
 ```
+
 
 ## Build your react-router (v3)
 
@@ -34,14 +30,15 @@ import { render } from 'react-dom'
 import { Router, IndexRedirect, Route, hashHistory } from 'react-router'
 
 import App from './app'
-import { PagePage, PageBisPage } from './pages'
+import Page from './pages/page'
+import PageBis from './pages/page-bis'
 
 render(
   <Router history={hashHistory}>
     <Route path="/" component={App}>
-      <IndexRedirect to={PagePage.getPath()} />
-      <Route path={PagePage.getPath('/')} component={PagePage}>
-        <Route path={PageBisPage.getPath(PagePage)} component={PageBisPage} />
+      <IndexRedirect to={Page.getPath()} />
+      <Route path={Page.getPath('/')} component={Page}>
+        <Route path={PageBis.getPath(Page)} component={PageBis} />
       </Route>
     </Route>
   </Router>,
@@ -56,7 +53,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import routeFor from 'react-route-config'
 
-const MyLink = () => (<Link to={routeFor('page')}>My page</Link>)
+const MyLink = () => (<Link to={routeFor('my-page')}>My page</Link>)
 
 export default MyLink
 ```
