@@ -13,27 +13,13 @@ module.exports = function (key) {
   return config[key] || null;
 }
 
-module.exports.buildRouting = function (components) {
-  var componentEmbeded = {};
+module.export.defineRoute = function (name, route) {
 
-  Object.keys(components).forEach(function (componentName) {
-    var component = components[componentName];
-    var embededKey = componentName + 'Page';
+  return function (component) {
+    component.pathname = route;
+    config[name] = route;
+    component.getPath = getSubPathnameFunc.bind(component);
 
-    if (component.pathname !== undefined) {
-      var name = componentName.replace(
-        /\.?([A-Z])/g,
-        function (x, y) {
-          return "-" + y.toLowerCase()
-        }
-      ).replace(/^-/, '');
-
-      config[name] = component.pathname;
-      component.getPath = getSubPathnameFunc.bind(component);
-    }
-
-    componentEmbeded[embededKey] = component;
-  })
-
-  return componentEmbeded;
+    return component;
+  }
 }
