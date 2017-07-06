@@ -5,6 +5,7 @@
 > in pages/page.jsx
 ```js
 import React from 'react'
+import { defineRoute } from 'react-route-config'
 
 const Page = () => (<div>My page</div>)
 
@@ -14,6 +15,7 @@ export default defineRoute('my-page', '/path/to/my/page')(Page)
 > in pages/page-bis.jsx
 ```js
 import React from 'react'
+import { defineRoute } from 'react-route-config'
 
 const PageBis = () => (<div>My page</div>)
 

@@ -1,6 +1,6 @@
 {
   "name": "react-route-config",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React route config component",
   "main": "index.js",
   "scripts": {
@@ -16,8 +16,6 @@
   "devDependencies": {
     "code": "^3.0.2",
     "codecov": "^1.0.1",
-    "fsmonitor": "^0.2.4",
-    "istanbul": "^0.4.5",
     "lab": "^11.0.1"
   },
   "author": "Nicolas Dufreche <n.dufreche@gmail.com>",
