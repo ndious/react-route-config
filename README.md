@@ -17,13 +17,15 @@ export default defineRoute('my-page', '/path/to/my/page')(Page)
 import React from 'react'
 import { defineRoute } from 'react-route-config'
 
-const PageBis = () => (<div>My page</div>)
+const PageBis = () => (<div>My page Bis</div>)
 
 export default defineRoute('my-page-bis', '/path/to/my/page/bis')(PageBis)
 ```
 
 
 ## Build your react-router (v3)
+
+[react-router v3 DOC](https://github.com/ReactTraining/react-router/tree/v3/docs)
 
 > in index.js
 ```js
@@ -55,7 +57,12 @@ import React from 'react'
 import { Link } from 'react-router'
 import routeFor from 'react-route-config'
 
-const MyLink = () => (<Link to={routeFor('my-page')}>My page</Link>)
+const MyLink = () => (
+  <ul>
+    <li><Link to={routeFor('my-page')}>My page</Link></li>
+    <li><Link to={routeFor('my-page-bis')}>My page Bis</Link></li>
+  </ul>
+)
 
 export default MyLink
 ```
