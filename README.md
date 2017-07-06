@@ -1,6 +1,10 @@
 # Usage
 
-## declare route
+react-route-config help you to declare route into react-router v3 and give you an helper to retrieve route pathname
+
+[react-router v3 DOC](https://github.com/ReactTraining/react-router/tree/v3/docs)
+
+## Declare route
 
 > in pages/page.jsx
 ```js
@@ -25,7 +29,7 @@ export default defineRoute('my-page-bis', '/path/to/my/page/bis')(PageBis)
 
 ## Build your react-router (v3)
 
-[react-router v3 DOC](https://github.com/ReactTraining/react-router/tree/v3/docs)
+[react-router route configuration](https://github.com/ReactTraining/react-router/blob/v3/docs/guides/RouteConfiguration.md)
 
 > in index.js
 ```js
