@@ -1,9 +1,4 @@
-'use strict';
-
-const Lab =  require('lab');
-const rrc = require('./index');
-const { expect } = require('code');
-const { describe, it } = exports.lab = Lab.script();
+import routeFor, { defineRoute, exportRoutes } from './src/index'
 
 const Sandwiches = { name: 'sandwiches' }
 
@@ -34,33 +29,25 @@ const routes = [
   }
 ]
 
-var Page = rrc.defineRoute('sandwiches', '/sandwiches')(Sandwiches);
-rrc.defineRoute('stop', '/tacos/bus/stop')({});
-rrc.defineRoute('bus', '/tacos/bus')({});
-rrc.defineRoute('sandwiches-cart', '/sandwiches/cart')({});
-rrc.defineRoute('tacos', '/tacos')({});
-rrc.defineRoute('cart', '/tacos/cart')({});
+var Page = defineRoute('sandwiches', '/sandwiches')(Sandwiches);
+defineRoute('stop', '/tacos/bus/stop')({});
+defineRoute('bus', '/tacos/bus')({});
+defineRoute('sandwiches-cart', '/sandwiches/cart')({});
+defineRoute('tacos', '/tacos')({});
+defineRoute('cart', '/tacos/cart')({});
 
-describe('Test path configuration', () => {
-  it ('should add the getPath function', done => {
-    expect(Page.path).to.be.a.string();
-    expect(Page.path).to.equal('/sandwiches');
-    expect(Page.component).to.be.an.object();
-    expect(Page.component).to.equal(Sandwiches);
-    done();
-  });
+test('define should have return an object with component and path property', () => {
+  expect(Page.path).toBe('/sandwiches');
+  expect(Page.component).toBe(Sandwiches);
+});
 
-  it ('exportRoutes should return the correct structure', done => {
-    var routes = rrc.exportRoutes()
-    expect(routes).to.equal(routes);
-    expect(rrc.exportRoutes()).to.equal(routes);
-    done();
-  });
+test('exportRoutes should return the correct structure', () => {
+  const routing = exportRoutes()
+  expect(exportRoutes()).toEqual(routes);
+});
 
-  it ('routeFor should return the correct url',  done => {
-    expect(rrc('tacos')).to.equal('/tacos');
-    expect(rrc('bus')).to.equal('/tacos/bus');
-    expect(rrc('non-existant-route')).to.equal(null);
-    done();
-  });
+test('routeFor should return the correct url', () => {
+  expect(routeFor('tacos')).toBe('/tacos');
+  expect(routeFor('bus')).toBe('/tacos/bus');
+  expect(routeFor('non-existant-route')).toBeNull();
 });
