@@ -1,12 +1,26 @@
+# Installation
+
+`npm install react-router react-route-config`
+
+## For react-router v2 and v3 
+
+`npm install react-router@3 react-route-config@1`
+
+[documentation for react-route-config v1]()
+
 # Usage
 
-react-route-config help you to declare route into react-router v3 and give you an helper to retrieve route pathname
+react-route-config help you to declare route into react-router and give you an helper to retrieve route pathname
 
-[react-router v3 DOC](https://github.com/ReactTraining/react-router/tree/v3/docs)
+[react-router DOC](https://reacttraining.com/react-router/)
 
 ## Declare route
 
-> in pages/page.jsx
+To declare your route you need to use the defineRoute function.
+
+`defineRoute(route-name, pathname)(component) => return { component, path }`
+
+> in page.jsx
 ```js
 import React from 'react'
 import { defineRoute } from 'react-route-config'
@@ -16,45 +30,97 @@ const Page = () => (<div>My page</div>)
 export default defineRoute('my-page', '/path/to/my/page')(Page)
 ```
 
-> in pages/page-bis.jsx
+> in pages/sub-page.jsx
 ```js
 import React from 'react'
 import { defineRoute } from 'react-route-config'
 
-const PageBis = () => (<div>My page Bis</div>)
+const SubPage = () => (<div>My Sub page</div>)
 
-export default defineRoute('my-page-bis', '/path/to/my/page/bis')(PageBis)
+export default defineRoute('my-sub-page', '/path/to/my/page/sub')(SubPage)
 ```
 
 
-## Build your react-router (v3)
+## Build your route configuration 
 
-[react-router route configuration](https://github.com/ReactTraining/react-router/blob/v3/docs/guides/RouteConfiguration.md)
+### Automatically
+
+Based on the [react-router documentation example](https://github.com/ReactTraining/react-router/blob/v3/docs/guides/RouteConfiguration.md)
+
+exportRoutes return an array of routes. In our example the return value is equals to:
+
+```json
+[
+  {
+    path: '/path/to/my/page',
+    component: Page,
+    routes: [
+      {
+        path: '/path/to/my/page/sub',
+        component: SubPage,
+      }
+    ]
+  }
+]
+```
 
 > in index.js
 ```js
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, IndexRedirect, Route, hashHistory } from 'react-router'
+import { Router, Route } from 'react-router'
+import { exportRoutes } from 'react-route-config'
 
-import App from './app'
-import Page from './pages/page'
-import PageBis from './pages/page-bis'
+import './page'
+import './sub-page'
+
+const RouteWithSubRoutes = (route) => (
+  <Route path={route.path} render={props => (
+    <route.component {...props} routes={route.routes}/>
+  )}/>
+)
 
 render(
-  <Router history={hashHistory}>
-    <Route path="/" component={App}>
-      <IndexRedirect to={Page.getPath()} />
-      <Route path={Page.getPath('/')} component={Page}>
-        <Route path={PageBis.getPath(Page)} component={PageBis} />
-      </Route>
-    </Route>
+  <Router>
+    <div>
+      {exportRoutes().map((route, i) => (
+        <RouteWithSubRoutes key={i} {...route}/>
+      ))}
+    </div>
+  </Router>,
+  document.getElementById('root')
+)
+```
+
+
+### Manually
+
+To do it, just use the returned value by defineRoute function
+
+> in index.js
+```js
+import React from 'react'
+import { render } from 'react-dom'
+import { Router, Route } from 'react-router'
+
+import Page from './page'
+import SubPage from './sub-page'
+
+
+render(
+  <Router>
+    <div>
+      <Route exact {...Page} />
+      <Route {...SubPage}/>
+    </div>
   </Router>,
   document.getElementById('root')
 )
 ```
 
 ## Use into Link component
+
+react-route-config expose a default function to retrieve your pages url
 
 ```js
 import React from 'react'
@@ -64,7 +130,7 @@ import routeFor from 'react-route-config'
 const MyLink = () => (
   <ul>
     <li><Link to={routeFor('my-page')}>My page</Link></li>
-    <li><Link to={routeFor('my-page-bis')}>My page Bis</Link></li>
+    <li><Link to={routeFor('my-sub-page')}>My sub page</Link></li>
   </ul>
 )
 
