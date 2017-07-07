@@ -1,6 +1,6 @@
 {
   "name": "react-route-config",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "React route config component",
   "main": "index.js",
   "scripts": {

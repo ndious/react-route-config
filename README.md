@@ -42,7 +42,7 @@ export default defineRoute('my-sub-page', '/path/to/my/page/sub')(SubPage)
 
 ### Automatically
 
-Following on the [react-router documentation example](https://github.com/ReactTraining/react-router/blob/v3/docs/guides/RouteConfiguration.md)
+Following on the [react-router documentation example](https://reacttraining.com/react-router/web/example/route-config)
 
 exportRoutes return an array of routes. In our example the return value is equals to:
 
