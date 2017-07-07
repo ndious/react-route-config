@@ -1,3 +1,7 @@
+# Installation
+
+`npm install react-router@3 react-route-config@1`
+
 # Usage
 
 react-route-config help you to declare route into react-router v3 and give you an helper to retrieve route pathname
