@@ -4,9 +4,7 @@
 
 ## For react-router v2 and v3 
 
-`npm install react-router@3 react-route-config@1`
-
-[documentation for react-route-config v1]()
+[documentation for react-route-config v1](https://github.com/ndufreche/react-route-config/tree/1.0.x)
 
 # Usage
 
@@ -40,12 +38,11 @@ const SubPage = () => (<div>My Sub page</div>)
 export default defineRoute('my-sub-page', '/path/to/my/page/sub')(SubPage)
 ```
 
-
-## Build your route configuration 
+## Route configuration 
 
 ### Automatically
 
-Based on the [react-router documentation example](https://github.com/ReactTraining/react-router/blob/v3/docs/guides/RouteConfiguration.md)
+Following on the [react-router documentation example](https://github.com/ReactTraining/react-router/blob/v3/docs/guides/RouteConfiguration.md)
 
 exportRoutes return an array of routes. In our example the return value is equals to:
 
