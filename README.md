@@ -49,12 +49,12 @@ exportRoutes return an array of routes. In our example the return value is equal
 ```json
 [
   {
-    path: '/path/to/my/page',
-    component: Page,
-    routes: [
+    "path": "/path/to/my/page",
+    "component": "Page",
+    "routes": [
       {
-        path: '/path/to/my/page/sub',
-        component: SubPage,
+        "path": "/path/to/my/page/sub",
+        "component": "SubPage",
       }
     ]
   }
